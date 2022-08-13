@@ -1,5 +1,8 @@
 #ifndef p6
 #define p6 
 #include "Person.h"
-class Bot: public Person{};
+class Bot: public Person{
+    public:
+        Person *clone();
+};
 #endif
