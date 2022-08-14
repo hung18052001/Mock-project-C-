@@ -89,7 +89,7 @@ bool Game::check_win(int x, int y) {
 void Game::add_stone(int x, int y) {
 	static int turnCount = 1;
 	board[x][y].set_value((x % 2 != 0) ? "X" : "O");
-    turnCount++;
+	turnCount++;
 }
 
 void Game::render() {
