@@ -43,6 +43,7 @@ bool Game::check_win(int x, int y) {
         temp++;
         i++;
     }
+    if (temp >= 4) count++;
 
     temp = 1;
     i = 1;
