@@ -3,8 +3,8 @@
 Player::Player(): 
     Person(),  name(""), password(""), ID(-1) {}
 
-Player::Player(int x, int y, string name, string password, int ID): 
-    Person(x, y), name(name), password(password), ID(ID) {}   
+Player::Player(string name, string password, int ID): 
+    Person(), name(name), password(password), ID(ID) {}   
 
 string Player::get_name() {
     return name;
@@ -30,9 +30,16 @@ void Player::set_ID(int ID) {
     this->ID = ID;
 }
 
+void Player::print_info() {
+    cout << "Ten: " << this->get_name() << endl;    
+    cout << "ID: " << this->get_ID() << endl;
+}
+
 Person *Player::clone() {
     return new Player(*this);
 }
+
+
 
 
 

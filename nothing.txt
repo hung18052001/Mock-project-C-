@@ -1,0 +1,9 @@
+
+int choose_next(vector<vector<string>> board, int role_bot);
+
+// cấu trúc board gồm các cell, mỗi cell nhận giá trị là: "x" hoặc "o" hoặc rỗng
+// role_bot = 1 nếu bot đi "x" ngược lại role_bot là 2
+// lượt đầu đc đánh bởi "x"     
+// hiện tại đến lượt bot đi
+// bot cần tìm cell trống tại hàng i, cột j sao cho tối ưu nhất
+// output của hàm trên là i * board.size() + j 
