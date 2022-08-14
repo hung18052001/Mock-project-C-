@@ -14,6 +14,9 @@ class Cell {
 		void set_value(string value) {
 			this->value = value;
 		}
+		bool operator==(Cell c) {
+			return value == c.value;
+		}
 };
 
 #endif
