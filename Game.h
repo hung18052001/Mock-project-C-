@@ -7,12 +7,13 @@ class Game {
 	private:
 		int size;
 		vector<vector<Cell>> board;
-		int current_x;
+		int current_x; // vi tri cua nuoc co vua duoc danh
 		int current_y;
 		Person *winner;
 	public: 
 		Game();
 		Game(int size, vector<vector<Cell>> board, int current_x, int current_y, Person* winner);
+		Game(int size);
 		Game(Game &game);
 		~Game();
 		bool check_win(); // check 3 o tiep

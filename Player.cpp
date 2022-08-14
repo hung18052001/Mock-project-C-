@@ -1,7 +1,7 @@
 #include "Player.h"
 
 Player::Player(): 
-    Person(),  name(""), password(""), ID(0) {}
+    Person(),  name(""), password(""), ID(-1) {}
 
 Player::Player(int x, int y, string name, string password, int ID): 
     Person(x, y), name(name), password(password), ID(ID) {}   
