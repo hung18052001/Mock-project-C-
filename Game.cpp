@@ -163,13 +163,7 @@ void Game::set_winner() {
     
 }
 
-void Game::check_board(int x, int y){
-	if(board[x][y].get_value() == "x" || board[x][y].get_value() == "o"){
-		return;
-	}
-	else cout << board[x][y].get_value();
 
-}
 void Game::render() {
 	
 	//draw board
@@ -203,7 +197,7 @@ void Game::render() {
 				++y_console;
 			}
 			else if(j == 2 || (j - 2) % 4 == 0){
-				check_board(x_console, y_console);
+				cout << board[x_console][y_console].get_value();
 			}
 			else
 				cout << " ";
