@@ -1,0 +1,54 @@
+* PHẦN NÀY CHƯA HOÀN THIỆN AE XEM GÓP Ý SỬA ĐỂ DÙNG ĐƯỢC NẾU THẤY ỔN
+
+Kiểm tra thắng thua . ( Chặn 2 đầu )
+Duyệt theo chiều dọc
+Duyệt theo chiều ngang
+Duyệt theo chiều chéo
+Tìm nước đi cho máy :
+Phòng thủ - khi số quân địch được duyệt chiều nhiều hơn
+Tấn công - khi số quân ta được duyệt chiều nhiều hơn
+Vẹt cạn các ô trống và đưa ra việc tính điểm cho từng ô để tìm ô trống phù
+hợp cho nước đi kế tiếp là việc tấn công hay phòng thủ và lưu lại tọa độ x
+y của ô trống để cho máy đánh .
+
+Giả sử quân ta là O
+Tính điểm tấn công chiều ngang: int SoDiemTanCongChieuNgang(...)
+DiemDuyetNgang = 0; soQuanDich = 0; soQuanTa = 0;
+- Xét lần lượt 5 ô bên phải (vòng for, đồng thời chiều ngang phải nhỏ hơn size của board)
+  - nếu là O thì soQuanTa++;
+  - nếu là X thì soQuanDich++; break; // hủy luôn khi gặp quân địch vì chặn rồi thì đánh phía bên cạch nữa làm j ?
+  - nếu là ô trống:
+    - xét lần lượt 5 ô bên phải kể từ bên cạnh ô trống này (vòng for, ... )
+      - nếu là O thì soQuanTa2++;
+      - nếu là X thì soQuanDich2++;
+      - nếu là ô trống thì break;	
+- Tương tự như thế cho trường hợp bên trái
+
+if soQuanDich = 2 (chặn 2 đầu, bởi trong vòng for cứ khi có quân địch là break;) return 0;
+if SoQuanDich = 0 thì DiemDuyetNgang += ... *2 ; else DiemDuyetNgang += ... 
+if soQuanDich2 = 0 thì DiemDuyetNgang += ... *2 ; else DiemDuyetNgang += ... 
+if soQuanTa >= soQuanTa2 thì DiemDuyetNgang -= 1 ; else DiemDuyetNgang -= 2
+if soQuanTa = 4 thì DiemDuyetNgang * 2
+if soQuanTa = 0 thì DiemDuyetNgang += ... *2 ; else DiemDuyetNgang += ... 
+if soQuanTa2 = 0 thì DiemDuyetNgang += ... *2 ; else DiemDuyetNgang += ... 
+
+return DiemDuyetNgang;
+
+int SoDiemTanCongChieuDoc()
+int SoDiemTanCongCheo() (vòng for thì cả hàng và cột cho cộng với i)
+int SoDiemTanCongCheo2()
+
+Tính điểm phòng thủ thì cũng tương tự nhưng ngược lại các trường hợp tính điểm bên dưới ( phần if else ... )
+
+Tìm kiếm nước đi cụ thể:
+Diem = 0; DiemTanCong = 0; DiemPhongThu = 0; 
+duyệt toàn bộ các vị trí
+  - nếu vị trí trống thì bắt đầu tính điểm ( duyệt hết các hàm tính điểm cho atk và def)
+    - nếu DiemTanCong > DiemPhongThu
+      - nếu Diem < DiemTanCong // duyệt toàn bộ các điểm, Điểm cao nhất mới lấy
+        Diem = DiemTanCong; setX,Y cho các giá trị rồi trả về tọa độ
+    - nếu DiemTanCong < DiemPhongThu
+      - nếu Diem < DiemPhongThu // như trên
+	Diem = DiemPhongThu; setX,Y cho các giá trị rồi trả về tọa độ
+
+Nói chung đọc code chứ cũng khá khó giải thích tường tận
