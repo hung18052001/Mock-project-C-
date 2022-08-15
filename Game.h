@@ -22,6 +22,7 @@ class Game {
 		int check_win(); // if equal -1, mean game does not finish, if 0, game ties, else game has 1 winner
 		void add_stone(int x, int y);
 		// board[i][j].set_value('x');
+		void check_board(int x, int y);
 		void render(); //
 		void finish_game(); // thuc hien cac hanh dong set up lai truoc khi game ket thuc
 		void set_winner();

@@ -115,7 +115,6 @@ int Game::check_win() {
 
 void Game::add_stone(int x, int y) {
 	static int turnCount = 1;
-	board[x][y].set_value((turnCount % 2 == 1) ? "x" : "o");
     current_x = x;
     current_y = y;
     if (turnCount % 2 == 1) {
@@ -131,58 +130,6 @@ void Game::add_stone(int x, int y) {
 	turnCount++;
 }
 
-void Game::render() {
-    //draw board
-	int axisX = 0, axisY = 0;  // these variables just used to print with board
-	cout << " ";
-	for(int j=0; j <size*4; j++){
-		if(j == 2 || (j - 2) % 4 == 0)
-			cout << axisX++;
-		else
-			cout << " ";
-	}
-	cout << endl;
-
-	//draw cell boxs in a row
-	int x_console = 0, y_console = -1; // two coordinates made to print on console screen
-	for(int i=0; i<size; i++){
-		cout << " ";
-		for(int j=0; j <size*4; j++){
-			if(j % 4 == 0)
-				cout << char(43);
-			else
-				cout << char(45);
-		}
-		cout << char(43) << endl;
-
-		cout << " ";
-		for(int j=0; j <size*4; j++){
-			if(j % 4 == 0){
-				cout << char(124);
-				++y_console;
-			}
-			else if((j == 2 || (j - 2) % 4 == 0) && current_x == x_console && current_y == y_console){
-				cout << "X";
-				// print value of Cell right here!!!!
-			}
-			else
-				cout << " ";
-		}
-		cout << char(124) << " " << axisY++ << endl;
-		x_console++;
-		y_console = -1;
-	}
-
-	//draw last edge of board
-	cout << " ";
-	for(int j=0; j <size*4; j++){
-		if(j % 4 == 0)
-			cout << char(43);
-		else
-			cout << char(45);
-	}
-	cout << char(43) << endl;
-}
 
 void Game::finish_game() {
     character1->set_pos_x(-1);
@@ -214,4 +161,67 @@ void Game::set_winner() {
     
 
     
+}
+
+void Game::check_board(int x, int y){
+	if(board[x][y].get_value() == "x" || board[x][y].get_value() == "o"){
+		return;
+	}
+	else cout << board[x][y].get_value();
+
+}
+void Game::render() {
+	
+	//draw board
+	
+	int axisX = 0, axisY = 0;  // these variables just used to print with board
+	cout << " ";
+	for(int j = 0; j < size * 4; j++){
+		if(j == 2 || (j - 2) % 4 == 0)
+			cout << axisX++;
+		else
+			cout << " ";
+	}
+	cout << endl;
+	
+	//draw cell boxs in each row
+	int x_console = 0, y_console = -1; // two coordinates made to print on console
+	for(int i = 0; i < size; i++){
+		cout << " ";
+		for(int j = 0; j < size * 4; j++){
+			if(j % 4 == 0)
+				cout << char(43);
+			else
+				cout << char(45);
+		}
+		cout << char(43) << endl;
+		
+		cout << " ";
+		for(int j = 0; j < size * 4; j++){
+			if(j % 4 == 0){
+				cout << char(124);
+				++y_console;
+			}
+			else if(j == 2 || (j - 2) % 4 == 0){
+				check_board(x_console, y_console);
+			}
+			else
+				cout << " ";
+		}
+		cout << char(124) << " " << axisY++ << endl;
+		x_console++;
+		y_console = -1;
+	}
+	
+	//draw last edge of board
+	cout << " ";
+	for(int j = 0; j < size*4; j++){
+		if(j % 4 == 0)
+			cout << char(43);
+		else
+			cout << char(45);
+	}
+	cout << char(43) << endl;
+
+	
 }

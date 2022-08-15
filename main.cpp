@@ -14,6 +14,7 @@ int main() {
         cout << "Moi nguoi choi nhap toa do nuoc di: ";
         cin >> x >> y;
         game.add_stone(x, y);
+        game.render();
         if (game.check_win() != -1) {
             game.set_winner();   
             break;
