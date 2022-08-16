@@ -8,7 +8,8 @@ class Cell {
 	private:
 		string value; // o or x or " "
 	public:
-		string get_value() {
+		Cell(): value(" ") {}
+		string get_value() const{
 			return value;
 		}
 		void set_value(string value) {

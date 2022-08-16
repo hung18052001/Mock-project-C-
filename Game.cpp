@@ -26,8 +26,22 @@ Game::Game(int size, Person *character1, Person *character2):
     this->character2 = character2;     
 }
 
-Game::Game(Game &game):
-    size(game.size), board(game.board), current_x(game.current_x), current_y(game.current_y) {
+Game::Game(const Game& game):
+    current_x(game.get_x()), current_y(game.get_y()) {
+    size = game.size;
+    board.resize(size);
+    for (int i = 0; i < size; i++)  
+        board[i].resize(size);  
+
+    for (int i = 0; i < size; i++) {
+        for (int j = 0; j < size; j++) {
+            board[i][j].set_value(game.board[i][j].get_value());
+            cout << board[i][j].get_value() << " ";
+
+        }
+        cout << endl;
+    }
+
     winner = game.winner->clone();
     character1 = game.character1->clone();
     character2 = game.character2->clone();
@@ -38,6 +52,13 @@ Game::~Game() {
         delete winner;   
         winner = NULL;
     }
+}
+
+int Game::get_x() const {
+    return current_x;
+}
+int Game::get_y() const {
+    return current_y;
 }
 void Game::set_x(int x) {
     current_x = x;
@@ -56,7 +77,6 @@ int Game::check_win() {
                 break;
             }
     if (is_tie) return 0;
-    int size = board.size();
     int count = 0;
     int temp = 1;
     int i = 1;
@@ -139,8 +159,7 @@ void Game::finish_game() {
 }
 
 void Game::set_winner() {
-    if (check_win() == -1)
-        return; 
+    
     int win_num = 0; // 1 if character1 win else 2
     cout << "Trò chơi kết thúc." << endl;     
     if (check_win() == 0)
@@ -148,16 +167,15 @@ void Game::set_winner() {
     else {
         if (board[current_x][current_y].get_value() == "x") {
             cout << "Kết quả chung cuộc: " << character1->get_name() << " dành chiến thắng!!!" << endl;
-            win_num = 1;
+            winner = character1;
         }
         else {
             cout << "Kết quả chung cuộc: " << character2->get_name() << " dành chiến thắng!!!" << endl;
-            win_num = 2;
+            winner = character2;
         }
     }  
-    finish_game();
-    if (win_num = 1) winner = character1;
-    else winner = character2;  
+    
+    
     
 
     
@@ -218,4 +236,13 @@ void Game::render() {
 	cout << char(43) << endl;
 
 	
+}
+
+void Game::print_data() {
+    cout << "Các nhân vật tham gia trò chơi: ";    
+    cout << character1->get_name() << ", " << character2->get_name() << "\n";
+    cout << "Kết quả trò chơi: ";
+    if (check_win() == 0)
+        cout << "Hòa.\n";
+    else cout << winner->get_name() << " dành chiến thắng.\n";
 }

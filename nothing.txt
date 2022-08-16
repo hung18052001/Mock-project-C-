@@ -7,3 +7,20 @@ int choose_next(vector<vector<string>> board, int role_bot);
 // hiện tại đến lượt bot đi
 // bot cần tìm cell trống tại hàng i, cột j sao cho tối ưu nhất
 // output của hàm trên là i * board.size() + j 
+
+Class A{}
+
+A a(b);
+A a = b;
+
+void fun(A a);
+int main() {
+    fun(a);
+    {
+        A a' = a;
+        ...
+    }
+}
+
+void push_back(const <type> &<value>);
+
