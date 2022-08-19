@@ -17,17 +17,27 @@ class Game {
 		Game(int size);
 		Game(const Game& game);
 		~Game();
+		void set_size(int size);
+		Person *get_character1();
+		Person *get_character2();
+
+		void set_character1(Person *character1);
+		void set_character2(Person *character2);
 		int get_x() const; //
 		int get_y() const;
 		void set_x(int x);      
 		void set_y(int y);
 		int check_win(); // if equal -1, mean game does not finish, if 0, game ties, else game has 1 winner
-		void add_stone(int x, int y);
+		void add_stone(int x, int y, bool character1_first);
 		// board[i][j].set_value('x');
 		void render(); //
 		void finish_game(); // thuc hien cac hanh dong set up lai truoc khi game ket thuc
 		void set_winner();
 		void print_data();
+		
+		
+		virtual void play();
+		virtual Game *clone();
 	   	
 		
 };

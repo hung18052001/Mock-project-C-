@@ -31,7 +31,8 @@ void Player::set_ID(int ID) {
 }
 
 void Player::print_info() {
-    cout << "Ten: " << this->get_name() << endl;    
+    cout << "Ten: " << this->get_name() << endl;   
+    cout << "Mat khau: " << this->get_password() << endl; 
     cout << "ID: " << this->get_ID() << endl;
 }
 

@@ -36,10 +36,9 @@ Game::Game(const Game& game):
     for (int i = 0; i < size; i++) {
         for (int j = 0; j < size; j++) {
             board[i][j].set_value(game.board[i][j].get_value());
-            cout << board[i][j].get_value() << " ";
+            
 
         }
-        cout << endl;
     }
 
     winner = game.winner->clone();
@@ -47,11 +46,37 @@ Game::Game(const Game& game):
     character2 = game.character2->clone();
 }
 
+
+
 Game::~Game() {
     if (winner != NULL) {
         delete winner;   
         winner = NULL;
     }
+}
+
+void Game::set_size(int size) {
+    this->size = size;
+    board.resize(size);
+    for (int i = 0; i < size; i++) 
+        board[i].resize(size);
+    for (int i = 0; i < size; i++)
+        for (int j = 0; j < size; j++)
+            board[i][j].set_value(" ");
+}
+Person *Game::get_character1() {
+    return character1;
+}
+
+Person *Game::get_character2() {
+    return character2;
+}
+void Game::set_character1(Person *character1) {
+    this->character1 = character1;
+}
+
+void Game::set_character2(Person *character2) {
+    this->character2 = character2;
 }
 
 int Game::get_x() const {
@@ -133,8 +158,8 @@ int Game::check_win() {
     return count > 0 ? 1 : -1;
 }
 
-void Game::add_stone(int x, int y) {
-	static int turnCount = 1;
+void Game::add_stone(int x, int y, bool character1_first) {
+	static int turnCount = character1_first ? 1 : 0;
     current_x = x;
     current_y = y;
     if (turnCount % 2 == 1) {
@@ -245,4 +270,12 @@ void Game::print_data() {
     if (check_win() == 0)
         cout << "Hòa.\n";
     else cout << winner->get_name() << " dành chiến thắng.\n";
+}
+
+void Game::play() {
+
+}
+
+Game *Game::clone() {
+    return NULL;
 }
