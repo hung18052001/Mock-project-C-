@@ -7,4 +7,7 @@ hello
 despair
 123
 7
+bot
+123
+7
 End of file

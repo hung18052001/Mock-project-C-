@@ -23,8 +23,9 @@ void Manage::user_manage(Storage &storage) {
         cout << "Bạn có thể lựa chọn các tính năng sau:\n";
         cout << "Nhập 1 để tiến hành đăng ký.\n";
         cout << "Nhập 2 để tiến hành đăng nhập và chơi game PvP.\n";
-        cout << "Nhập 3 để xem thông tin các game đã chơi.\n";
-        cout << "Nhập 4 để quay lại trang chính.\n";
+        cout << "Nhâp 3 để tiến hành đăng nhập và chơi game PvE.\n";
+        cout << "Nhập 4 để xem thông tin các game đã chơi.\n";
+        cout << "Nhập 5 để quay lại trang chính.\n";
         cout << "Xin mời nhập lựa chọn: ";
         int select = 0;  
         cin >> select;
@@ -43,16 +44,25 @@ void Manage::user_manage(Storage &storage) {
             game_pvp->play();  
             storage.add_game(game_pvp);
             continue;
-
-
-
         }
         if (select == 3) {
+            Game *game_pve = new GamePvE();
+            sign_in_PvE(storage, game_pve);    
+            cout << "Mời nhập kích cỡ ô cờ: ";
+            int inp_size = 0;
+            cin >> inp_size;  
+            game_pve->set_size(inp_size);  
+            
+            game_pve->play();
+            storage.add_game(game_pve);
+            continue;
+        }
+        if (select == 4) {
             cout << "Thông tin về các game đã chơi:\n";
             storage.print_game_info();
             continue;
         }
-        if (select == 4) {
+        if (select == 5) {
             cout << "Quay lại trang chính.\n";
             break;
         }
@@ -171,8 +181,35 @@ void Manage::sign_in_PvP(Storage &storage, Game *&game) {
             cout << "Tên đăng nhập hoặc mật khẩu không hợp lệ.\n";
             continue;
         }
-    }
+    } 
+}
 
+
+
+void Manage::sign_in_PvE(Storage &storage, Game *&game) {
+   
+        while (1) {
+            cout << "Mời người chơi thứ  đăng nhập.\n";
+            string inp_name;
+            string inp_password;
+            cout << "Mời nhập tên: ";
+            fflush(stdin);  
+            getline(cin, inp_name);   
+            cout << "Mời nhập pasword: ";
+            getline(cin, inp_password);
+            Person *p = storage.exist(inp_name, inp_password, false);
+            Person *bot = new Bot();
+            if (p != NULL) {
+                cout << "Người chơi thứ  đăng nhập thành công.\n";
+                game->set_character1(p);
+                game->set_character2(bot);
+                break;
+                
+            }
+            
+            cout << "Tên đăng nhập hoặc mật khẩu không hợp lệ.\n";
+            continue;
+        }
     
 }
 
@@ -190,7 +227,5 @@ bool Manage::sign_in_admin(Storage &storage) {
             return true;
         }
         cout << "Tên đăng nhập hoặc mật khẩu không hợp lệ.\n";
-        return false;
-        
-    
+        return false;    
 }

@@ -1,15 +1,18 @@
 #include <iostream>
+#include "Bot.cpp"
 #include "Game.cpp"
 #include "GamePvP.cpp"
+#include "GamePvE.cpp"
 #include "Player.cpp"
 #include "Person.cpp"
 #include "Storage.cpp"
 #include "Manage.cpp"
 #include "Guild.cpp"
 
+
 using namespace std;
 
-int main() {
+int main() {    
     Manage manage;
     Storage storage;
     Guild guild;
@@ -45,13 +48,9 @@ int main() {
 
             break;
         }
-
         continue;
     }
-
-
-    
-    
+    return 0;
 }
 
 

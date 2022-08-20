@@ -23,6 +23,7 @@ class Person {
         void set_pos_x(int x);  
         void set_pos_y(int y);  
         virtual string get_name() = 0;
+        virtual void set_name(string name) = 0;
         virtual Person *clone() = 0;   
         virtual void print_info() = 0;
 

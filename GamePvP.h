@@ -8,9 +8,6 @@ class GamePvP: public Game {
 		GamePvP(int size, Person *character1, Person *character2);
 		GamePvP(int size);
 		Game *clone();
-		void play();
-		
-
-		
+		void play();	
 };
 #endif

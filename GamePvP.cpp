@@ -9,9 +9,6 @@ GamePvP::GamePvP(int size, Person *character1, Person *character2):
 GamePvP::GamePvP(int size):
     Game(size) {}
 
-
-
-
 Game *GamePvP::clone() {
     return new GamePvP(*this);
 }
@@ -37,15 +34,12 @@ void GamePvP::play() {
         else cout << "Mời " << player2->get_name() << " nhập tọa độ quân cờ: ";
         int x, y;   
         cin >> x >> y;    
-        add_stone(x, y, character1_first);
+        add_stone(x, y, turn + random_value);
         render();
         turn ++;
         if (check_win() == -1) continue;
-        set_winner();  
+        set_winner();
         finish_game();
         break;
     }
-
-
 }
-
