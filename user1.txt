@@ -1,0 +1,10 @@
+shitsui
+10101
+3
+despair
+10101
+4
+bot
+123
+5
+End of file
