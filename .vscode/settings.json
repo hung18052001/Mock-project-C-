@@ -1,6 +1,11 @@
 {
     "files.associations": {
         "*.tcc": "cpp",
+<<<<<<< HEAD
         "streambuf": "cpp"
+=======
+        "streambuf": "cpp",
+        "ostream": "cpp"
+>>>>>>> sonth
     }
 }

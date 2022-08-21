@@ -4,4 +4,10 @@ shitsui
 despair
 10101
 4
+<<<<<<< HEAD
+=======
+bot
+123
+5
+>>>>>>> sonth
 End of file

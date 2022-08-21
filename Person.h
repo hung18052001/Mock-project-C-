@@ -23,6 +23,10 @@ class Person {
         void set_pos_x(int x);  
         void set_pos_y(int y);  
         virtual string get_name() = 0;
+<<<<<<< HEAD
+=======
+        virtual void set_name(string name) = 0;
+>>>>>>> sonth
         virtual Person *clone() = 0;   
         virtual void print_info() = 0;
 

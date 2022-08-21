@@ -20,4 +20,8 @@ void Person::set_pos_y(int y) {
 bool Person::in_game() {
     return (pos_x != -1) || (pos_y != -1);
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> sonth
 

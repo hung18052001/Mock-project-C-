@@ -7,4 +7,10 @@ hello
 despair
 123
 7
+<<<<<<< HEAD
+=======
+bot
+123
+7
+>>>>>>> sonth
 End of file

@@ -9,9 +9,12 @@ GamePvP::GamePvP(int size, Person *character1, Person *character2):
 GamePvP::GamePvP(int size):
     Game(size) {}
 
+<<<<<<< HEAD
 
 
 
+=======
+>>>>>>> sonth
 Game *GamePvP::clone() {
     return new GamePvP(*this);
 }
@@ -37,6 +40,7 @@ void GamePvP::play() {
         else cout << "Mời " << player2->get_name() << " nhập tọa độ quân cờ: ";
         int x, y;   
         cin >> x >> y;    
+<<<<<<< HEAD
         add_stone(x, y, character1_first);
         render();
         turn ++;
@@ -49,3 +53,21 @@ void GamePvP::play() {
 
 }
 
+=======
+        if (check_point(x,y) == false){
+            do {
+                cout << "\nTọa độ vừa nhập đã bị trùng !!! " << endl;
+                cout << "Mời " << player1->get_name() <<" nhập lại tọa độ quân cờ: ";
+                cin >> x >> y;
+            }while (check_point(x,y) == false);
+        }
+        add_stone(x, y, turn + random_value);
+        render();
+        turn ++;
+        if (check_win() == -1) continue;
+        set_winner();
+        finish_game();
+        break;
+    }
+}
+>>>>>>> sonth
